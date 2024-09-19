@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Software Engineer",
+    "position": "Full-stack Developer",
+    "description": "We are seeking a talented Full-stack Developer to join our dynamic team...",
+    "postedDate": "2023-05-15",
+    "recruiter": {
+      "name": "Alice Johnson",
+      "email": "alice.johnson@techrecruiter.com",
+      "linkedinUrl": "https://www.linkedin.com/in/alice-johnson"
+    },
+    "hiringManager": {
+      "name": "Bob Smith",
+      "email": "bob.smith@techcompany.com",
+      "linkedinUrl": "https://www.linkedin.com/in/bob-smith"
+    }
+  },
+  {
+    "title": "UX Designer",
+    "position": "Senior UX/UI Designer",
+    "description": "We're looking for an experienced UX/UI Designer to create intuitive and visually appealing user interfaces...",
+    "postedDate": "2023-05-16",
+    "recruiter": {
+      "name": "Carol White",
+      "email": "carol.white@designrecruiter.com"
+    },
+    "hiringManager": {
+      "name": "David Brown",
+      "email": "david.brown@designfirm.com"
+    }
+  },
+  {
+    "title": "Data Scientist",
+    "position": "Machine Learning Engineer",
+    "description": "Join our AI team to develop cutting-edge machine learning models and algorithms...",
+    "postedDate": "2023-05-17",
+    "recruiter": {
+      "name": "Eva Green",
+      "email": "eva.green@airecruiter.com",
+      "linkedinUrl": "https://www.linkedin.com/in/eva-green"
+    },
+    "hiringManager": {
+      "name": "Frank Lee",
+      "email": "frank.lee@aicompany.com"
+    }
+  },
+  {
+    "title": "DevOps Engineer",
+    "position": "Senior DevOps Specialist",
+    "description": "We're seeking a DevOps expert to streamline our deployment processes and improve system reliability...",
+    "postedDate": "2023-05-18",
+    "recruiter": {
+      "name": "Grace Taylor",
+      "email": "grace.taylor@techrecruiter.com"
+    },
+    "hiringManager": {
+      "name": "Henry Wilson",
+      "email": "henry.wilson@devopsco.com",
+      "linkedinUrl": "https://www.linkedin.com/in/henry-wilson"
+    }
+  },
+  {
+    "title": "Frontend Developer",
+    "position": "React Specialist",
+    "description": "Join our frontend team to build responsive and performant user interfaces using React and modern web technologies...",
+    "postedDate": "2023-05-19",
+    "recruiter": {
+      "name": "Ivy Chen",
+      "email": "ivy.chen@webrecruiter.com",
+      "linkedinUrl": "https://www.linkedin.com/in/ivy-chen"
+    },
+    "hiringManager": {
+      "name": "Jack Davis",
+      "email": "jack.davis@webdev.com"
+    }
+  },
+  {
+    "title": "Backend Developer",
+    "position": "Node.js Expert",
+    "description": "We're looking for a skilled Node.js developer to build scalable and efficient server-side applications...",
+    "postedDate": "2023-05-20",
+    "recruiter": {
+      "name": "Karen Brown",
+      "email": "karen.brown@techrecruiter.com"
+    },
+    "hiringManager": {
+      "name": "Liam Johnson",
+      "email": "liam.johnson@backendco.com",
+      "linkedinUrl": "https://www.linkedin.com/in/liam-johnson"
+    }
+  },
+  {
+    "title": "Product Manager",
+    "position": "Senior Product Manager",
+    "description": "Lead the development of innovative products from conception to launch in our fast-paced tech environment...",
+    "postedDate": "2023-05-21",
+    "recruiter": {
+      "name": "Mia Rodriguez",
+      "email": "mia.rodriguez@pmrecruiter.com",
+      "linkedinUrl": "https://www.linkedin.com/in/mia-rodriguez"
+    },
+    "hiringManager": {
+      "name": "Noah Thompson",
+      "email": "noah.thompson@productco.com"
+    }
+  },
+  {
+    "title": "QA Engineer",
+    "position": "Test Automation Specialist",
+    "description": "Join our QA team to develop and maintain automated test suites, ensuring high-quality software releases...",
+    "postedDate": "2023-05-22",
+    "recruiter": {
+      "name": "Olivia Martin",
+      "email": "olivia.martin@qarecruiter.com"
+    },
+    "hiringManager": {
+      "name": "Peter Wang",
+      "email": "peter.wang@testingco.com",
+      "linkedinUrl": "https://www.linkedin.com/in/peter-wang"
+    }
+  },
+  {
+    "title": "Cloud Architect",
+    "position": "AWS Solutions Architect",
+    "description": "Design and implement scalable, highly available, and fault-tolerant systems on AWS cloud infrastructure...",
+    "postedDate": "2023-05-23",
+    "recruiter": {
+      "name": "Quinn Foster",
+      "email": "quinn.foster@cloudrecruiter.com",
+      "linkedinUrl": "https://www.linkedin.com/in/quinn-foster"
+    },
+    "hiringManager": {
+      "name": "Rachel Kim",
+      "email": "rachel.kim@cloudco.com"
+    }
+  },
+  {
+    "title": "Mobile Developer",
+    "position": "iOS Specialist",
+    "description": "Develop cutting-edge iOS applications using Swift and the latest Apple technologies...",
+    "postedDate": "2023-05-24",
+    "recruiter": {
+      "name": "Samuel Lee",
+      "email": "samuel.lee@mobilerecruiter.com"
+    },
+    "hiringManager": {
+      "name": "Tina Chen",
+      "email": "tina.chen@appsco.com",
+      "linkedinUrl": "https://www.linkedin.com/in/tina-chen"
+    }
+  }
+]
