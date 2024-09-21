@@ -11,7 +11,8 @@ import { toast } from 'sonner'
 
 interface JobOffer {
   id: string
-  title: string
+  company: string
+  companyLogo: string
   position: string
   description: string
   postedDate: string
@@ -19,11 +20,13 @@ interface JobOffer {
     name: string
     email: string
     linkedinUrl?: string
+    avatar: string
   }
   hiringManager: {
     name: string
     email: string
     linkedinUrl?: string
+    avatar: string
   }
 }
 
@@ -89,6 +92,13 @@ export default function JobOffers() {
   // Function to schedule the next offer
   const scheduleNextOffer = useCallback(() => {
     console.log('Scheduling next offer')
+    // If there are only two offers, add a new one after 2 seconds
+    if (displayedOffers.length === 2 && remainingOffers.length > 0) {
+      setTimeout(() => {
+        addNewOffer();
+      }, 2000);
+      return; // Exit early to avoid scheduling another offer
+    }
     const delay = Math.floor(Math.random() * (10000 - 1000 + 1)) + 5000 // Random delay between 5-15 seconds
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
@@ -136,7 +146,7 @@ export default function JobOffers() {
       ...prevStates,
       [offer.id]: action
     }))
-    console.log(`Job offer "${offer.title}" ${action}`)
+    console.log(`Job offer for "${offer.company}" ${action}`)
 
     if (action === 'accepted') {
       setActionStates(prevStates => ({
@@ -206,7 +216,7 @@ export default function JobOffers() {
                   </div>
                 )}
                 <CardHeader>
-                  <CardTitle>{offer.title}</CardTitle>
+                  <CardTitle>{offer.company}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-2">{offer.position}</p>

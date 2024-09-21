@@ -1,152 +1,192 @@
 [
   {
-    "title": "Software Engineer",
+    "company": "TechInnovate Solutions",
+    "companyLogo": "https://logo.clearbit.com/techinnovate.com",
     "position": "Full-stack Developer",
     "description": "We are seeking a talented Full-stack Developer to join our dynamic team...",
     "postedDate": "2023-05-15",
     "recruiter": {
       "name": "Alice Johnson",
       "email": "alice.johnson@techrecruiter.com",
-      "linkedinUrl": "https://www.linkedin.com/in/alice-johnson"
+      "linkedinUrl": "https://www.linkedin.com/in/alice-johnson",
+      "avatar": "https://i.pravatar.cc/150?u=alice.johnson@techrecruiter.com"
     },
     "hiringManager": {
       "name": "Bob Smith",
-      "email": "bob.smith@techcompany.com",
-      "linkedinUrl": "https://www.linkedin.com/in/bob-smith"
+      "email": "bob.smith@techinnovate.com",
+      "linkedinUrl": "https://www.linkedin.com/in/bob-smith",
+      "avatar": "https://i.pravatar.cc/150?u=bob.smith@techinnovate.com"
     }
   },
   {
-    "title": "UX Designer",
+    "company": "DesignCraft Studios",
+    "companyLogo": "https://logo.clearbit.com/designcraft.com",
     "position": "Senior UX/UI Designer",
     "description": "We're looking for an experienced UX/UI Designer to create intuitive and visually appealing user interfaces...",
     "postedDate": "2023-05-16",
     "recruiter": {
       "name": "Carol White",
-      "email": "carol.white@designrecruiter.com"
+      "email": "carol.white@designrecruiter.com",
+      "linkedinUrl": "https://www.linkedin.com/in/carol-white",
+      "avatar": "https://i.pravatar.cc/150?u=carol.white@designrecruiter.com"
     },
     "hiringManager": {
       "name": "David Brown",
-      "email": "david.brown@designfirm.com"
+      "email": "david.brown@designcraft.com",
+      "linkedinUrl": "https://www.linkedin.com/in/david-brown",
+      "avatar": "https://i.pravatar.cc/150?u=david.brown@designcraft.com"
     }
   },
   {
-    "title": "Data Scientist",
+    "company": "AI Innovations Inc.",
+    "companyLogo": "https://logo.clearbit.com/aiinnovations.com",
     "position": "Machine Learning Engineer",
     "description": "Join our AI team to develop cutting-edge machine learning models and algorithms...",
     "postedDate": "2023-05-17",
     "recruiter": {
       "name": "Eva Green",
       "email": "eva.green@airecruiter.com",
-      "linkedinUrl": "https://www.linkedin.com/in/eva-green"
+      "linkedinUrl": "https://www.linkedin.com/in/eva-green",
+      "avatar": "https://i.pravatar.cc/150?u=eva.green@airecruiter.com"
     },
     "hiringManager": {
       "name": "Frank Lee",
-      "email": "frank.lee@aicompany.com"
+      "email": "frank.lee@aiinnovations.com",
+      "linkedinUrl": "https://www.linkedin.com/in/frank-lee",
+      "avatar": "https://i.pravatar.cc/150?u=frank.lee@aiinnovations.com"
     }
   },
   {
-    "title": "DevOps Engineer",
+    "company": "CloudOps Solutions",
+    "companyLogo": "https://logo.clearbit.com/cloudops.com",
     "position": "Senior DevOps Specialist",
     "description": "We're seeking a DevOps expert to streamline our deployment processes and improve system reliability...",
     "postedDate": "2023-05-18",
     "recruiter": {
       "name": "Grace Taylor",
-      "email": "grace.taylor@techrecruiter.com"
+      "email": "grace.taylor@techrecruiter.com",
+      "linkedinUrl": "https://www.linkedin.com/in/grace-taylor",
+      "avatar": "https://i.pravatar.cc/150?u=grace.taylor@techrecruiter.com"
     },
     "hiringManager": {
       "name": "Henry Wilson",
-      "email": "henry.wilson@devopsco.com",
-      "linkedinUrl": "https://www.linkedin.com/in/henry-wilson"
+      "email": "henry.wilson@cloudops.com",
+      "linkedinUrl": "https://www.linkedin.com/in/henry-wilson",
+      "avatar": "https://i.pravatar.cc/150?u=henry.wilson@cloudops.com"
     }
   },
   {
-    "title": "Frontend Developer",
+    "company": "WebTech Innovations",
+    "companyLogo": "https://logo.clearbit.com/webtech.com",
     "position": "React Specialist",
     "description": "Join our frontend team to build responsive and performant user interfaces using React and modern web technologies...",
     "postedDate": "2023-05-19",
     "recruiter": {
       "name": "Ivy Chen",
       "email": "ivy.chen@webrecruiter.com",
-      "linkedinUrl": "https://www.linkedin.com/in/ivy-chen"
+      "linkedinUrl": "https://www.linkedin.com/in/ivy-chen",
+      "avatar": "https://i.pravatar.cc/150?u=ivy.chen@webrecruiter.com"
     },
     "hiringManager": {
       "name": "Jack Davis",
-      "email": "jack.davis@webdev.com"
+      "email": "jack.davis@webtech.com",
+      "linkedinUrl": "https://www.linkedin.com/in/jack-davis",
+      "avatar": "https://i.pravatar.cc/150?u=jack.davis@webtech.com"
     }
   },
   {
-    "title": "Backend Developer",
+    "company": "ServerSide Systems",
+    "companyLogo": "https://logo.clearbit.com/serverside.com",
     "position": "Node.js Expert",
     "description": "We're looking for a skilled Node.js developer to build scalable and efficient server-side applications...",
     "postedDate": "2023-05-20",
     "recruiter": {
       "name": "Karen Brown",
-      "email": "karen.brown@techrecruiter.com"
+      "email": "karen.brown@techrecruiter.com",
+      "linkedinUrl": "https://www.linkedin.com/in/karen-brown",
+      "avatar": "https://i.pravatar.cc/150?u=karen.brown@techrecruiter.com"
     },
     "hiringManager": {
       "name": "Liam Johnson",
-      "email": "liam.johnson@backendco.com",
-      "linkedinUrl": "https://www.linkedin.com/in/liam-johnson"
+      "email": "liam.johnson@serverside.com",
+      "linkedinUrl": "https://www.linkedin.com/in/liam-johnson",
+      "avatar": "https://i.pravatar.cc/150?u=liam.johnson@serverside.com"
     }
   },
   {
-    "title": "Product Manager",
+    "company": "InnovatePro",
+    "companyLogo": "https://logo.clearbit.com/innovatepro.com",
     "position": "Senior Product Manager",
     "description": "Lead the development of innovative products from conception to launch in our fast-paced tech environment...",
     "postedDate": "2023-05-21",
     "recruiter": {
       "name": "Mia Rodriguez",
       "email": "mia.rodriguez@pmrecruiter.com",
-      "linkedinUrl": "https://www.linkedin.com/in/mia-rodriguez"
+      "linkedinUrl": "https://www.linkedin.com/in/mia-rodriguez",
+      "avatar": "https://i.pravatar.cc/150?u=mia.rodriguez@pmrecruiter.com"
     },
     "hiringManager": {
       "name": "Noah Thompson",
-      "email": "noah.thompson@productco.com"
+      "email": "noah.thompson@innovatepro.com",
+      "linkedinUrl": "https://www.linkedin.com/in/noah-thompson",
+      "avatar": "https://i.pravatar.cc/150?u=noah.thompson@innovatepro.com"
     }
   },
   {
-    "title": "QA Engineer",
+    "company": "QualityTech Solutions",
+    "companyLogo": "https://logo.clearbit.com/qualitytech.com",
     "position": "Test Automation Specialist",
     "description": "Join our QA team to develop and maintain automated test suites, ensuring high-quality software releases...",
     "postedDate": "2023-05-22",
     "recruiter": {
       "name": "Olivia Martin",
-      "email": "olivia.martin@qarecruiter.com"
+      "email": "olivia.martin@qarecruiter.com",
+      "linkedinUrl": "https://www.linkedin.com/in/olivia-martin",
+      "avatar": "https://i.pravatar.cc/150?u=olivia.martin@qarecruiter.com"
     },
     "hiringManager": {
       "name": "Peter Wang",
-      "email": "peter.wang@testingco.com",
-      "linkedinUrl": "https://www.linkedin.com/in/peter-wang"
+      "email": "peter.wang@qualitytech.com",
+      "linkedinUrl": "https://www.linkedin.com/in/peter-wang",
+      "avatar": "https://i.pravatar.cc/150?u=peter.wang@qualitytech.com"
     }
   },
   {
-    "title": "Cloud Architect",
+    "company": "CloudScale Solutions",
+    "companyLogo": "https://logo.clearbit.com/cloudscale.com",
     "position": "AWS Solutions Architect",
     "description": "Design and implement scalable, highly available, and fault-tolerant systems on AWS cloud infrastructure...",
     "postedDate": "2023-05-23",
     "recruiter": {
       "name": "Quinn Foster",
       "email": "quinn.foster@cloudrecruiter.com",
-      "linkedinUrl": "https://www.linkedin.com/in/quinn-foster"
+      "linkedinUrl": "https://www.linkedin.com/in/quinn-foster",
+      "avatar": "https://i.pravatar.cc/150?u=quinn.foster@cloudrecruiter.com"
     },
     "hiringManager": {
       "name": "Rachel Kim",
-      "email": "rachel.kim@cloudco.com"
+      "email": "rachel.kim@cloudscale.com",
+      "linkedinUrl": "https://www.linkedin.com/in/rachel-kim",
+      "avatar": "https://i.pravatar.cc/150?u=rachel.kim@cloudscale.com"
     }
   },
   {
-    "title": "Mobile Developer",
+    "company": "AppTech Innovations",
+    "companyLogo": "https://logo.clearbit.com/apptech.com",
     "position": "iOS Specialist",
     "description": "Develop cutting-edge iOS applications using Swift and the latest Apple technologies...",
     "postedDate": "2023-05-24",
     "recruiter": {
       "name": "Samuel Lee",
-      "email": "samuel.lee@mobilerecruiter.com"
+      "email": "samuel.lee@mobilerecruiter.com",
+      "linkedinUrl": "https://www.linkedin.com/in/samuel-lee",
+      "avatar": "https://i.pravatar.cc/150?u=samuel.lee@mobilerecruiter.com"
     },
     "hiringManager": {
       "name": "Tina Chen",
-      "email": "tina.chen@appsco.com",
-      "linkedinUrl": "https://www.linkedin.com/in/tina-chen"
+      "email": "tina.chen@apptech.com",
+      "linkedinUrl": "https://www.linkedin.com/in/tina-chen",
+      "avatar": "https://i.pravatar.cc/150?u=tina.chen@apptech.com"
     }
   }
 ]

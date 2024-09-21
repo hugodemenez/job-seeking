@@ -21,3 +21,23 @@ export const fakePersona = {
     }
   ]
 }
+
+interface JobOffer {
+  company: string;
+  companyLogo: string;
+  position: string;
+  description: string;
+  postedDate: string;
+  recruiter: {
+    name: string;
+    email: string;
+    linkedinUrl: string;
+    avatar: string;
+  };
+  hiringManager: {
+    name: string;
+    email: string;
+    linkedinUrl: string;
+    avatar: string;
+  };
+}
