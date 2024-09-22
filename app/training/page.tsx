@@ -8,7 +8,12 @@ import { Button } from "@/components/ui/button"
 import Link from 'next/link'
 
 interface JobOffer {
-  // ... same interface as in generated-documents/page.tsx
+  id: string;
+  title: string;
+  position: string;
+  description: string;
+  postedDate: string;
+  // Add other properties as needed
 }
 
 export default function TrainingPage() {

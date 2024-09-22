@@ -2,27 +2,12 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { generateResume } from './generateResume'
 import { generateCoverLetter } from './generateCoverLetter'
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
-
-interface JobOffer {
-  id: string
-  title: string
-  position: string
-  description: string
-  postedDate: string
-  recruiter: {
-    name: string
-    email: string
-  }
-  hiringManager: {
-    name: string
-    email: string
-  }
-}
+import { JobOffer } from './types'
 
 async function createPDF(content: string, title: string): Promise<string> {
   const pdfDoc = await PDFDocument.create()
   const page = pdfDoc.addPage()
-  const { width, height } = page.getSize()
+  const { height } = page.getSize()
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica)
 
   page.drawText(title, {

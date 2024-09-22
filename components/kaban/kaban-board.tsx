@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckIcon, EyeIcon, LinkedinIcon, FileIcon } from 'lucide-react'
+import { EyeIcon, FileIcon } from 'lucide-react'
 import jobOffersData from '../../data/jobOffers.json'
 import { toast } from 'sonner'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
@@ -12,13 +12,12 @@ import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer'
 import Image from 'next/image'
-import { cn } from '@/lib/utils'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel'
+import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 import Autoplay from "embla-carousel-autoplay"
-import { stringToColor } from '@/lib/utils'
 
 interface JobOffer {
   id: string
+  originalOfferId?: string
   company: string
   companyLogo: string
   position: string
@@ -125,15 +124,17 @@ export default function KanbanJobBoard() {
       id: crypto.randomUUID()
     }))
 
-    const appliedOffers = offersWithIds.slice(0, 2)
     const newColorMap: Record<string, string> = {}
 
-    appliedOffers.forEach((offer, index) => {
+    // Assign colors to all offers
+    offersWithIds.forEach((offer, index) => {
       const colorIndex = index % customColors.length
       newColorMap[offer.id] = customColors[colorIndex]
     })
 
     setColorMap(newColorMap)
+
+    const appliedOffers = offersWithIds.slice(0, 1)
 
     const recruiterCards = appliedOffers.flatMap(offer =>
       offer.recruiters.map(recruiter => ({
@@ -141,7 +142,7 @@ export default function KanbanJobBoard() {
         ...recruiter,
         id: crypto.randomUUID(),
         type: 'recruiter' as const,
-        originalOfferId: offer.id // Add this to link back to the original offer
+        originalOfferId: offer.id
       }))
     )
     const hiringManagerCards = appliedOffers.flatMap(offer =>
@@ -150,14 +151,14 @@ export default function KanbanJobBoard() {
         ...manager,
         id: crypto.randomUUID(),
         type: 'hiringManager' as const,
-        originalOfferId: offer.id // Add this to link back to the original offer
+        originalOfferId: offer.id
       }))
     )
 
     setColumns(prev => prev.map(col => {
       switch (col.id) {
         case 'offers':
-          return { ...col, items: offersWithIds.slice(2) }
+          return { ...col, items: offersWithIds.slice(1) }
         case 'applied':
           return { ...col, items: appliedOffers }
         case 'recruiter':
@@ -224,8 +225,23 @@ export default function KanbanJobBoard() {
     newColumns[destColIndex] = { ...destCol, items: destItems }
 
     if (destination.droppableId === 'applied') {
-      const recruiterCards = movedItem.recruiters.map(recruiter => ({ ...movedItem, ...recruiter, id: crypto.randomUUID(), type: 'recruiter' as const, originalOfferId: movedItem.id }))
-      const hiringManagerCards = movedItem.hiringManagers.map(manager => ({ ...movedItem, ...manager, id: crypto.randomUUID(), type: 'hiringManager' as const, originalOfferId: movedItem.id }))
+      const newColor = customColors[Object.keys(colorMap).length % customColors.length]
+      setColorMap(prev => ({ ...prev, [movedItem.id]: newColor }))
+
+      const recruiterCards = movedItem.recruiters.map(recruiter => ({ 
+        ...movedItem, 
+        ...recruiter, 
+        id: crypto.randomUUID(), 
+        type: 'recruiter' as const, 
+        originalOfferId: movedItem.id 
+      }))
+      const hiringManagerCards = movedItem.hiringManagers.map(manager => ({ 
+        ...movedItem, 
+        ...manager, 
+        id: crypto.randomUUID(), 
+        type: 'hiringManager' as const, 
+        originalOfferId: movedItem.id 
+      }))
 
       newColumns[2].items.push(...recruiterCards)
       newColumns[3].items.push(...hiringManagerCards)
@@ -239,14 +255,27 @@ export default function KanbanJobBoard() {
     setColumns(newColumns)
   }
 
-  const JobOfferCard = ({ offer, index, columnId }: { offer: JobOffer | AppliedJobOffer, index: number, columnId: string }) => {
-    const getCardBorderColor = () => {
-      if (columnId === 'offers') return 'border-custom-light-blue'
-      return ` border-${colorMap[offer.id]}`
+  const getCardBorderColor = (offerId: string) => {
+    if (!offerId) return 'border-gray-200'
+    const color = colorMap[offerId]
+    if (!color) {
+      return 'border-gray-200' // Default color if not found
     }
+    return `border-${color}`
+  }
+
+  const JobOfferCard = ({ offer, index, columnId }: { offer: JobOffer | AppliedJobOffer, index: number, columnId: string }) => {
+    const borderColor = getCardBorderColor(offer.id)
 
     if (columnId === 'recruiter' || columnId === 'hiringManager') {
-      const person = offer as any // Type assertion for simplicity
+      const person = offer as JobOffer & { 
+        type: 'recruiter' | 'hiringManager';
+        name: string;
+        email: string;
+        avatar?: string;
+        linkedinUrl?: string;
+      };
+
       return (
         <Draggable draggableId={offer.id} index={index}>
           {(provided) => (
@@ -255,17 +284,17 @@ export default function KanbanJobBoard() {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
             >
-              <Card className={`w-full mb-4 border-2  ${getCardBorderColor()}`}>
+              <Card className={`w-full mb-4 border-2  ${borderColor}`}>
                 <CardHeader className='flex justify-start items-center gap-2'>
                   <div className='flex w-full justify-start items-center gap-2'>
                     <Avatar>
                       <AvatarImage src={person.avatar} />
                       <AvatarFallback>{person.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <CardTitle>{person.name}</CardTitle>
-                    <p className="text-sm text-muted-foreground">{columnId === 'recruiter' ? 'Recruiter' : 'Hiring Manager'}</p>
-                  </div>
+                    </Avatar>
+                    <div>
+                      <CardTitle>{person.name}</CardTitle>
+                      <p className="text-sm text-muted-foreground">{columnId === 'recruiter' ? 'Recruiter' : 'Hiring Manager'}</p>
+                    </div>
                   </div>
                   <CardDescription className='w-full justify-start'>{person.email}</CardDescription>
                 </CardHeader>
@@ -281,7 +310,7 @@ export default function KanbanJobBoard() {
                     </div>
                     interviewing.io
                   </Button>
-                  {person?.linkedinUrl && (
+                  {person.linkedinUrl && (
                     <Button
                       variant="outline"
                       asChild
@@ -350,24 +379,26 @@ export default function KanbanJobBoard() {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <Card className={`w-full mb-4 border-2 border-custom-yellow ${getCardBorderColor()}`}>
-              <CardHeader className='flex flex-row items-center gap-2'>
+            <Card className={`w-full mb-4 border-2 ${columnId === 'offers' ? 'border-gray-50' : borderColor}`}>
+              <CardHeader className='flex flex-row items-center gap-2 pb-2'>
                 <Avatar>
                   <AvatarImage src={offer.companyLogo} />
                   <AvatarFallback>{offer.company.charAt(0)}</AvatarFallback>
                 </Avatar>
-                <CardTitle>{offer.company}</CardTitle>
+                <CardTitle className="p-0">
+                  {offer.company}
+                <p className="text-sm font-light text-muted-foreground">{offer.position}</p>
+                </CardTitle>
               </CardHeader>
-              <CardContent className='pb-0'>
-                <p className="text-sm text-muted-foreground mb-2">{offer.position}</p>
-                <p className="text-sm mb-4">{offer.description.split(" ").slice(0, 6).join(" ")}...</p>
+              <CardContent className='pb-2'>
+                <p className="text-sm text-muted-foreground">{offer.description.split(" ").slice(0, 15).join(" ")}...</p>
               </CardContent>
               <CardFooter className="flex justify-between">
                 <p className="text-xs text-muted-foreground">
                   Posted on: {new Date(offer.postedDate).toLocaleDateString()}
                 </p>
                 <Sheet>
-                  <SheetTrigger>
+                  <SheetTrigger asChild>
                     <Button variant="outline" size="sm">
                       Details
                       <EyeIcon className="w-4 h-4 ml-2" />
@@ -508,7 +539,7 @@ export default function KanbanJobBoard() {
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className="p-4 rounded-lg bg-custom-ice border-2  flex-1 overflow-y-auto"
+                  className="p-4 rounded-lg bg-gray-50 border-2  flex-1 overflow-y-auto"
                 >
                   {column.items.map((offer, index) => (
                     <JobOfferCard key={offer.id} offer={offer} index={index} columnId={column.id} />

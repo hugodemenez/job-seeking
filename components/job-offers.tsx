@@ -9,6 +9,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
+interface CompanyInfo {
+  sector: string;
+  founded: string;
+  ceo: {
+    name: string;
+    avatar: string;
+    linkedinUrl: string;
+  };
+  openPositions: string[];
+}
+
 interface JobOffer {
   id: string
   company: string
@@ -16,18 +27,19 @@ interface JobOffer {
   position: string
   description: string
   postedDate: string
-  recruiter: {
+  recruiters: {
     name: string
     email: string
     linkedinUrl?: string
     avatar: string
-  }
-  hiringManager: {
+  }[]
+  hiringManagers: {
     name: string
     email: string
     linkedinUrl?: string
     avatar: string
-  }
+  }[]
+  companyInfo?: CompanyInfo
 }
 
 interface GeneratedDocuments {
@@ -39,7 +51,6 @@ export default function JobOffers() {
   const [displayedOffers, setDisplayedOffers] = useState<JobOffer[]>([])
   const [remainingOffers, setRemainingOffers] = useState<JobOffer[]>([])
   const [actionStates, setActionStates] = useState<{ [key: string]: 'idle' | 'accepted' | 'denied' | 'saved' | 'generating' | 'ready' }>({})
-  const [generatedResumes, setGeneratedResumes] = useState<{ [key: string]: string }>({})
   const [generatedDocuments, setGeneratedDocuments] = useState<{ [key: string]: GeneratedDocuments }>({})
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const router = useRouter()
@@ -54,13 +65,10 @@ export default function JobOffers() {
       setRemainingOffers(prev => prev.slice(1))
       toast("New offer has been added.")
       
-      // Highlight the new offer
       setHighlightedOffers(prev => new Set(prev).add(newOffer.id))
       
-      // Set addition time
       setAdditionTimes(prev => ({...prev, [newOffer.id]: Date.now()}))
       
-      // Remove highlight after 5 seconds
       setTimeout(() => {
         setHighlightedOffers(prev => {
           const updated = new Set(prev)
@@ -69,7 +77,7 @@ export default function JobOffers() {
         })
       }, 5000)
     }
-  }, [remainingOffers])
+  }, [remainingOffers, displayedOffers.length])
 
   // Update seconds ago every second
   useEffect(() => {
@@ -124,15 +132,15 @@ export default function JobOffers() {
     // Add unique IDs to job offers
     const offersWithIds = jobOffersData.map(offer => ({
       ...offer,
-      id: crypto.randomUUID()
+      id: crypto.randomUUID(),
+      recruiter: offer.recruiters[0], // Assign the first recruiter as the main recruiter
+      hiringManager: offer.hiringManagers[0] // Assign the first hiring manager as the main hiring manager
     }))
 
     // Initialize with 2 random offers
     const shuffled = [...offersWithIds].sort(() => 0.5 - Math.random())
     setDisplayedOffers(shuffled.slice(0, 2))
     setRemainingOffers(shuffled.slice(2))
-
-    
 
     return () => {
       if (timeoutRef.current) {
@@ -224,10 +232,10 @@ export default function JobOffers() {
                   <p className="text-xs text-muted-foreground">
                     Posted on: {new Date(offer.postedDate).toLocaleDateString()}
                   </p>
-                  {generatedResumes[offer.id] && (
+                  {generatedDocuments[offer.id] && (
                     <div className="mt-4 p-4 border rounded bg-gray-50">
                       <h2 className="text-lg font-bold mb-2">Generated Resume</h2>
-                      <pre className="text-sm whitespace-pre-wrap">{generatedResumes[offer.id]}</pre>
+                      <pre className="text-sm whitespace-pre-wrap">{generatedDocuments[offer.id].resume}</pre>
                     </div>
                   )}
                 </CardContent>

@@ -1,54 +1,73 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import Link from 'next/link'
 
 interface JobOffer {
   id: string
-  title: string
+  company: string
   position: string
-  description: string
-  postedDate: string
+  // Add other properties as needed
 }
 
 export default function AppliedPage() {
   const searchParams = useSearchParams()
-  const offerParam = searchParams.get('offer')
-  const resumeParam = searchParams.get('resume')
+  const offerParam = searchParams?.get('offer')
+  const resumeParam = searchParams?.get('resume')
 
   const offer: JobOffer | null = offerParam ? JSON.parse(decodeURIComponent(offerParam)) : null
   const resume: string | null = resumeParam ? decodeURIComponent(resumeParam) : null
 
-  if (!offer || !resume) {
-    return <div>No application data found.</div>
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1500)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (!offer) {
+    return <div>No offer data available</div>
   }
 
   return (
-    <main className="w-full max-w-4xl mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-8">Application Submitted</h1>
-      <div className="space-y-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>Job Offer Details</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <h2 className="text-xl font-semibold">{offer.title}</h2>
-            <p className="text-sm text-muted-foreground mb-2">{offer.position}</p>
-            <p className="text-sm mb-4">{offer.description}</p>
-            <p className="text-xs text-muted-foreground">
-              Posted on: {new Date(offer.postedDate).toLocaleDateString()}
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
+    <main className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Application Submitted</h1>
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>Job Details</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p><strong>Company:</strong> {offer.company}</p>
+          <p><strong>Position:</strong> {offer.position}</p>
+          {/* Add more job details as needed */}
+        </CardContent>
+      </Card>
+
+      {resume && (
+        <Card className="mb-8">
           <CardHeader>
             <CardTitle>Generated Resume</CardTitle>
           </CardHeader>
           <CardContent>
-            <pre className="text-sm whitespace-pre-wrap bg-gray-50 p-4 rounded">{resume}</pre>
+            <pre className="whitespace-pre-wrap">{resume}</pre>
           </CardContent>
         </Card>
-      </div>
+      )}
+
+      <Button asChild>
+        <Link href="/dashboard">Return to Dashboard</Link>
+      </Button>
     </main>
   )
 }

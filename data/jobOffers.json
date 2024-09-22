@@ -1,491 +1,246 @@
 [
   {
-    "company": "TechInnovate Solutions",
-    "companyLogo": "https://logo.clearbit.com/techinnovate.com",
-    "position": "Full-stack Developer",
-    "description": "We are seeking a talented Full-stack Developer to join our dynamic team...",
+    "company": "Google",
+    "companyLogo": "https://logo.clearbit.com/google.com",
+    "position": "Senior Software Engineer",
+    "description": "Join our team to work on cutting-edge technologies and help build products that impact billions of users...",
     "postedDate": "2023-05-15",
     "recruiters": [
       {
         "name": "Alice Johnson",
-        "email": "alice.johnson@techrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/alice-johnson",
-        "avatar": "https://i.pravatar.cc/150?u=alice.johnson@techrecruiter.com"
+        "email": "alice.johnson@google.com",
+        "linkedinUrl": "https://www.linkedin.com/in/alice-johnson-google",
+        "avatar": "https://i.pravatar.cc/150?u=alice.johnson@google.com"
       },
       {
         "name": "Bob Williams",
-        "email": "bob.williams@techrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/bob-williams",
-        "avatar": "https://i.pravatar.cc/150?u=bob.williams@techrecruiter.com"
+        "email": "bob.williams@google.com",
+        "linkedinUrl": "https://www.linkedin.com/in/bob-williams-google",
+        "avatar": "https://i.pravatar.cc/150?u=bob.williams@google.com"
       }
     ],
     "hiringManagers": [
       {
         "name": "Charlie Brown",
-        "email": "charlie.brown@techinnovate.com",
-        "linkedinUrl": "https://www.linkedin.com/in/charlie-brown",
-        "avatar": "https://i.pravatar.cc/150?u=charlie.brown@techinnovate.com"
+        "email": "charlie.brown@google.com",
+        "linkedinUrl": "https://www.linkedin.com/in/charlie-brown-google",
+        "avatar": "https://i.pravatar.cc/150?u=charlie.brown@google.com"
       },
       {
         "name": "Diana Ross",
-        "email": "diana.ross@techinnovate.com",
-        "linkedinUrl": "https://www.linkedin.com/in/diana-ross",
-        "avatar": "https://i.pravatar.cc/150?u=diana.ross@techinnovate.com"
+        "email": "diana.ross@google.com",
+        "linkedinUrl": "https://www.linkedin.com/in/diana-ross-google",
+        "avatar": "https://i.pravatar.cc/150?u=diana.ross@google.com"
       }
     ],
     "companyInfo": {
-      "sector": "Software Development",
-      "founded": "2010",
+      "sector": "Technology",
+      "founded": "1998",
       "ceo": {
-        "name": "Emma Watson",
-        "avatar": "https://i.pravatar.cc/150?u=emma.watson@techinnovate.com",
-        "linkedinUrl": "https://www.linkedin.com/in/emma-watson-ceo"
+        "name": "Sundar Pichai",
+        "avatar": "https://i.pravatar.cc/150?u=sundar.pichai@google.com",
+        "linkedinUrl": "https://www.linkedin.com/in/sundar-pichai"
       },
       "openPositions": [
-        "Full-stack Developer",
-        "UX Designer",
-        "DevOps Engineer"
-      ]
-    }
-  },
-  {
-    "company": "DesignCraft Studios",
-    "companyLogo": "https://logo.clearbit.com/designcraft.com",
-    "position": "Senior UX/UI Designer",
-    "description": "We're looking for an experienced UX/UI Designer to create intuitive and visually appealing user interfaces...",
-    "postedDate": "2023-05-16",
-    "recruiters": [
-      {
-        "name": "Carol White",
-        "email": "carol.white@designrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/carol-white",
-        "avatar": "https://i.pravatar.cc/150?u=carol.white@designrecruiter.com"
-      },
-      {
-        "name": "David Brown",
-        "email": "david.brown@designrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/david-brown",
-        "avatar": "https://i.pravatar.cc/150?u=david.brown@designrecruiter.com"
-      }
-    ],
-    "hiringManagers": [
-      {
-        "name": "Eva Green",
-        "email": "eva.green@designcraft.com",
-        "linkedinUrl": "https://www.linkedin.com/in/eva-green",
-        "avatar": "https://i.pravatar.cc/150?u=eva.green@designcraft.com"
-      },
-      {
-        "name": "Frank Lee",
-        "email": "frank.lee@designcraft.com",
-        "linkedinUrl": "https://www.linkedin.com/in/frank-lee",
-        "avatar": "https://i.pravatar.cc/150?u=frank.lee@designcraft.com"
-      }
-    ],
-    "companyInfo": {
-      "sector": "Design and Creative Services",
-      "founded": "2015",
-      "ceo": {
-        "name": "Michael Johnson",
-        "avatar": "https://i.pravatar.cc/150?u=michael.johnson@designcraft.com",
-        "linkedinUrl": "https://www.linkedin.com/in/michael-johnson-ceo"
-      },
-      "openPositions": [
-        "Senior UX/UI Designer",
-        "Graphic Designer",
-        "Motion Graphics Artist"
-      ]
-    }
-  },
-  {
-    "company": "AI Innovations Inc.",
-    "companyLogo": "https://logo.clearbit.com/aiinnovations.com",
-    "position": "Machine Learning Engineer",
-    "description": "Join our AI team to develop cutting-edge machine learning models and algorithms...",
-    "postedDate": "2023-05-17",
-    "recruiters": [
-      {
-        "name": "Grace Taylor",
-        "email": "grace.taylor@airecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/grace-taylor",
-        "avatar": "https://i.pravatar.cc/150?u=grace.taylor@airecruiter.com"
-      },
-      {
-        "name": "Henry Wilson",
-        "email": "henry.wilson@airecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/henry-wilson",
-        "avatar": "https://i.pravatar.cc/150?u=henry.wilson@airecruiter.com"
-      }
-    ],
-    "hiringManagers": [
-      {
-        "name": "Ivy Chen",
-        "email": "ivy.chen@aiinnovations.com",
-        "linkedinUrl": "https://www.linkedin.com/in/ivy-chen",
-        "avatar": "https://i.pravatar.cc/150?u=ivy.chen@aiinnovations.com"
-      },
-      {
-        "name": "Jack Davis",
-        "email": "jack.davis@aiinnovations.com",
-        "linkedinUrl": "https://www.linkedin.com/in/jack-davis",
-        "avatar": "https://i.pravatar.cc/150?u=jack.davis@aiinnovations.com"
-      }
-    ],
-    "companyInfo": {
-      "sector": "Artificial Intelligence",
-      "founded": "2018",
-      "ceo": {
-        "name": "Sophia Chen",
-        "avatar": "https://i.pravatar.cc/150?u=sophia.chen@aiinnovations.com",
-        "linkedinUrl": "https://www.linkedin.com/in/sophia-chen-ceo"
-      },
-      "openPositions": [
-        "Machine Learning Engineer",
-        "Data Scientist",
-        "AI Research Scientist"
-      ]
-    }
-  },
-  {
-    "company": "CloudOps Solutions",
-    "companyLogo": "https://logo.clearbit.com/cloudops.com",
-    "position": "Senior DevOps Specialist",
-    "description": "We're seeking a DevOps expert to streamline our deployment processes and improve system reliability...",
-    "postedDate": "2023-05-18",
-    "recruiters": [
-      {
-        "name": "Karen Brown",
-        "email": "karen.brown@techrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/karen-brown",
-        "avatar": "https://i.pravatar.cc/150?u=karen.brown@techrecruiter.com"
-      },
-      {
-        "name": "Liam Johnson",
-        "email": "liam.johnson@techrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/liam-johnson",
-        "avatar": "https://i.pravatar.cc/150?u=liam.johnson@techrecruiter.com"
-      }
-    ],
-    "hiringManagers": [
-      {
-        "name": "Mia Rodriguez",
-        "email": "mia.rodriguez@cloudops.com",
-        "linkedinUrl": "https://www.linkedin.com/in/mia-rodriguez",
-        "avatar": "https://i.pravatar.cc/150?u=mia.rodriguez@cloudops.com"
-      },
-      {
-        "name": "Noah Thompson",
-        "email": "noah.thompson@cloudops.com",
-        "linkedinUrl": "https://www.linkedin.com/in/noah-thompson",
-        "avatar": "https://i.pravatar.cc/150?u=noah.thompson@cloudops.com"
-      }
-    ],
-    "companyInfo": {
-      "sector": "Cloud Infrastructure",
-      "founded": "2012",
-      "ceo": {
-        "name": "Olivia Martin",
-        "avatar": "https://i.pravatar.cc/150?u=olivia.martin@cloudops.com",
-        "linkedinUrl": "https://www.linkedin.com/in/olivia-martin-ceo"
-      },
-      "openPositions": [
-        "Senior DevOps Specialist",
-        "Cloud Architect",
-        "Infrastructure Engineer"
-      ]
-    }
-  },
-  {
-    "company": "WebTech Innovations",
-    "companyLogo": "https://logo.clearbit.com/webtech.com",
-    "position": "React Specialist",
-    "description": "Join our frontend team to build responsive and performant user interfaces using React and modern web technologies...",
-    "postedDate": "2023-05-19",
-    "recruiters": [
-      {
-        "name": "Peter Wang",
-        "email": "peter.wang@webrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/peter-wang",
-        "avatar": "https://i.pravatar.cc/150?u=peter.wang@webrecruiter.com"
-      },
-      {
-        "name": "Quinn Foster",
-        "email": "quinn.foster@webrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/quinn-foster",
-        "avatar": "https://i.pravatar.cc/150?u=quinn.foster@webrecruiter.com"
-      }
-    ],
-    "hiringManagers": [
-      {
-        "name": "Rachel Kim",
-        "email": "rachel.kim@webtech.com",
-        "linkedinUrl": "https://www.linkedin.com/in/rachel-kim",
-        "avatar": "https://i.pravatar.cc/150?u=rachel.kim@webtech.com"
-      },
-      {
-        "name": "Samuel Lee",
-        "email": "samuel.lee@webtech.com",
-        "linkedinUrl": "https://www.linkedin.com/in/samuel-lee",
-        "avatar": "https://i.pravatar.cc/150?u=samuel.lee@webtech.com"
-      }
-    ],
-    "companyInfo": {
-      "sector": "Web Development",
-      "founded": "2014",
-      "ceo": {
-        "name": "Tina Chen",
-        "avatar": "https://i.pravatar.cc/150?u=tina.chen@webtech.com",
-        "linkedinUrl": "https://www.linkedin.com/in/tina-chen-ceo"
-      },
-      "openPositions": [
-        "React Specialist",
-        "Frontend Developer",
-        "UI/UX Designer"
-      ]
-    }
-  },
-  {
-    "company": "ServerSide Systems",
-    "companyLogo": "https://logo.clearbit.com/serverside.com",
-    "position": "Node.js Expert",
-    "description": "We're looking for a skilled Node.js developer to build scalable and efficient server-side applications...",
-    "postedDate": "2023-05-20",
-    "recruiters": [
-      {
-        "name": "Uma Patel",
-        "email": "uma.patel@techrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/uma-patel",
-        "avatar": "https://i.pravatar.cc/150?u=uma.patel@techrecruiter.com"
-      },
-      {
-        "name": "Victor Lee",
-        "email": "victor.lee@techrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/victor-lee",
-        "avatar": "https://i.pravatar.cc/150?u=victor.lee@techrecruiter.com"
-      }
-    ],
-    "hiringManagers": [
-      {
-        "name": "Wendy Chen",
-        "email": "wendy.chen@serverside.com",
-        "linkedinUrl": "https://www.linkedin.com/in/wendy-chen",
-        "avatar": "https://i.pravatar.cc/150?u=wendy.chen@serverside.com"
-      },
-      {
-        "name": "Xavier Brown",
-        "email": "xavier.brown@serverside.com",
-        "linkedinUrl": "https://www.linkedin.com/in/xavier-brown",
-        "avatar": "https://i.pravatar.cc/150?u=xavier.brown@serverside.com"
-      }
-    ],
-    "companyInfo": {
-      "sector": "Server-side Development",
-      "founded": "2016",
-      "ceo": {
-        "name": "Yasmine Johnson",
-        "avatar": "https://i.pravatar.cc/150?u=yasmine.johnson@serverside.com",
-        "linkedinUrl": "https://www.linkedin.com/in/yasmine-johnson-ceo"
-      },
-      "openPositions": [
-        "Node.js Expert",
-        "Backend Developer",
-        "DevOps Engineer"
-      ]
-    }
-  },
-  {
-    "company": "InnovatePro",
-    "companyLogo": "https://logo.clearbit.com/innovatepro.com",
-    "position": "Senior Product Manager",
-    "description": "Lead the development of innovative products from conception to launch in our fast-paced tech environment...",
-    "postedDate": "2023-05-21",
-    "recruiters": [
-      {
-        "name": "Zara Smith",
-        "email": "zara.smith@pmrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/zara-smith",
-        "avatar": "https://i.pravatar.cc/150?u=zara.smith@pmrecruiter.com"
-      },
-      {
-        "name": "Aiden White",
-        "email": "aiden.white@pmrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/aiden-white",
-        "avatar": "https://i.pravatar.cc/150?u=aiden.white@pmrecruiter.com"
-      }
-    ],
-    "hiringManagers": [
-      {
-        "name": "Bella Johnson",
-        "email": "bella.johnson@innovatepro.com",
-        "linkedinUrl": "https://www.linkedin.com/in/bella-johnson",
-        "avatar": "https://i.pravatar.cc/150?u=bella.johnson@innovatepro.com"
-      },
-      {
-        "name": "Carter Davis",
-        "email": "carter.davis@innovatepro.com",
-        "linkedinUrl": "https://www.linkedin.com/in/carter-davis",
-        "avatar": "https://i.pravatar.cc/150?u=carter.davis@innovatepro.com"
-      }
-    ],
-    "companyInfo": {
-      "sector": "Product Management",
-      "founded": "2013",
-      "ceo": {
-        "name": "Daisy Brown",
-        "avatar": "https://i.pravatar.cc/150?u=daisy.brown@innovatepro.com",
-        "linkedinUrl": "https://www.linkedin.com/in/daisy-brown-ceo"
-      },
-      "openPositions": [
-        "Senior Product Manager",
-        "Product Designer",
+        "Senior Software Engineer",
+        "Product Manager",
         "UX Researcher"
       ]
     }
   },
   {
-    "company": "QualityTech Solutions",
-    "companyLogo": "https://logo.clearbit.com/qualitytech.com",
-    "position": "Test Automation Specialist",
-    "description": "Join our QA team to develop and maintain automated test suites, ensuring high-quality software releases...",
-    "postedDate": "2023-05-22",
+    "company": "Microsoft",
+    "companyLogo": "https://logo.clearbit.com/microsoft.com",
+    "position": "Cloud Solutions Architect",
+    "description": "Design and implement scalable, highly available, and fault-tolerant systems on Azure cloud infrastructure...",
+    "postedDate": "2023-05-16",
     "recruiters": [
       {
-        "name": "Ella Martin",
-        "email": "ella.martin@qarecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/ella-martin",
-        "avatar": "https://i.pravatar.cc/150?u=ella.martin@qarecruiter.com"
+        "name": "Eva Green",
+        "email": "eva.green@microsoft.com",
+        "linkedinUrl": "https://www.linkedin.com/in/eva-green-microsoft",
+        "avatar": "https://i.pravatar.cc/150?u=eva.green@microsoft.com"
       },
       {
-        "name": "Finn Johnson",
-        "email": "finn.johnson@qarecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/finn-johnson",
-        "avatar": "https://i.pravatar.cc/150?u=finn.johnson@qarecruiter.com"
+        "name": "Frank Lee",
+        "email": "frank.lee@microsoft.com",
+        "linkedinUrl": "https://www.linkedin.com/in/frank-lee-microsoft",
+        "avatar": "https://i.pravatar.cc/150?u=frank.lee@microsoft.com"
       }
     ],
     "hiringManagers": [
       {
-        "name": "Grace Lee",
-        "email": "grace.lee@qualitytech.com",
-        "linkedinUrl": "https://www.linkedin.com/in/grace-lee",
-        "avatar": "https://i.pravatar.cc/150?u=grace.lee@qualitytech.com"
+        "name": "Grace Taylor",
+        "email": "grace.taylor@microsoft.com",
+        "linkedinUrl": "https://www.linkedin.com/in/grace-taylor-microsoft",
+        "avatar": "https://i.pravatar.cc/150?u=grace.taylor@microsoft.com"
       },
       {
-        "name": "Harry Brown",
-        "email": "harry.brown@qualitytech.com",
-        "linkedinUrl": "https://www.linkedin.com/in/harry-brown",
-        "avatar": "https://i.pravatar.cc/150?u=harry.brown@qualitytech.com"
+        "name": "Henry Wilson",
+        "email": "henry.wilson@microsoft.com",
+        "linkedinUrl": "https://www.linkedin.com/in/henry-wilson-microsoft",
+        "avatar": "https://i.pravatar.cc/150?u=henry.wilson@microsoft.com"
       }
     ],
     "companyInfo": {
-      "sector": "Quality Assurance",
-      "founded": "2017",
+      "sector": "Technology",
+      "founded": "1975",
       "ceo": {
-        "name": "Isabella Chen",
-        "avatar": "https://i.pravatar.cc/150?u=isabella.chen@qualitytech.com",
-        "linkedinUrl": "https://www.linkedin.com/in/isabella-chen-ceo"
+        "name": "Satya Nadella",
+        "avatar": "https://i.pravatar.cc/150?u=satya.nadella@microsoft.com",
+        "linkedinUrl": "https://www.linkedin.com/in/satya-nadella"
       },
       "openPositions": [
-        "Test Automation Specialist",
-        "QA Engineer",
-        "Test Analyst"
+        "Cloud Solutions Architect",
+        "Software Engineer",
+        "Program Manager"
       ]
     }
   },
   {
-    "company": "CloudScale Solutions",
-    "companyLogo": "https://logo.clearbit.com/cloudscale.com",
-    "position": "AWS Solutions Architect",
-    "description": "Design and implement scalable, highly available, and fault-tolerant systems on AWS cloud infrastructure...",
-    "postedDate": "2023-05-23",
+    "company": "LinkedIn",
+    "companyLogo": "https://logo.clearbit.com/linkedin.com",
+    "position": "Senior Frontend Engineer",
+    "description": "Join our team to build responsive and performant user interfaces using React and modern web technologies...",
+    "postedDate": "2023-05-17",
     "recruiters": [
       {
-        "name": "Jasmine Wilson",
-        "email": "jasmine.wilson@cloudrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/jasmine-wilson",
-        "avatar": "https://i.pravatar.cc/150?u=jasmine.wilson@cloudrecruiter.com"
+        "name": "Ivy Chen",
+        "email": "ivy.chen@linkedin.com",
+        "linkedinUrl": "https://www.linkedin.com/in/ivy-chen-linkedin",
+        "avatar": "https://i.pravatar.cc/150?u=ivy.chen@linkedin.com"
       },
       {
-        "name": "Kai Johnson",
-        "email": "kai.johnson@cloudrecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/kai-johnson",
-        "avatar": "https://i.pravatar.cc/150?u=kai.johnson@cloudrecruiter.com"
+        "name": "Jack Davis",
+        "email": "jack.davis@linkedin.com",
+        "linkedinUrl": "https://www.linkedin.com/in/jack-davis-linkedin",
+        "avatar": "https://i.pravatar.cc/150?u=jack.davis@linkedin.com"
       }
     ],
     "hiringManagers": [
       {
-        "name": "Luna Brown",
-        "email": "luna.brown@cloudscale.com",
-        "linkedinUrl": "https://www.linkedin.com/in/luna-brown",
-        "avatar": "https://i.pravatar.cc/150?u=luna.brown@cloudscale.com"
+        "name": "Karen Brown",
+        "email": "karen.brown@linkedin.com",
+        "linkedinUrl": "https://www.linkedin.com/in/karen-brown-linkedin",
+        "avatar": "https://i.pravatar.cc/150?u=karen.brown@linkedin.com"
       },
       {
-        "name": "Milo Davis",
-        "email": "milo.davis@cloudscale.com",
-        "linkedinUrl": "https://www.linkedin.com/in/milo-davis",
-        "avatar": "https://i.pravatar.cc/150?u=milo.davis@cloudscale.com"
+        "name": "Liam Johnson",
+        "email": "liam.johnson@linkedin.com",
+        "linkedinUrl": "https://www.linkedin.com/in/liam-johnson-linkedin",
+        "avatar": "https://i.pravatar.cc/150?u=liam.johnson@linkedin.com"
       }
     ],
     "companyInfo": {
-      "sector": "Cloud Infrastructure",
-      "founded": "2011",
+      "sector": "Professional Networking",
+      "founded": "2002",
       "ceo": {
-        "name": "Nora White",
-        "avatar": "https://i.pravatar.cc/150?u=nora.white@cloudscale.com",
-        "linkedinUrl": "https://www.linkedin.com/in/nora-white-ceo"
+        "name": "Ryan Roslansky",
+        "avatar": "https://i.pravatar.cc/150?u=ryan.roslansky@linkedin.com",
+        "linkedinUrl": "https://www.linkedin.com/in/ryanroslansky"
       },
       "openPositions": [
-        "AWS Solutions Architect",
-        "Cloud Engineer",
-        "DevOps Engineer"
+        "Senior Frontend Engineer",
+        "Data Scientist",
+        "Product Manager"
       ]
     }
   },
   {
-    "company": "AppTech Innovations",
-    "companyLogo": "https://logo.clearbit.com/apptech.com",
-    "position": "iOS Specialist",
-    "description": "Develop cutting-edge iOS applications using Swift and the latest Apple technologies...",
-    "postedDate": "2023-05-24",
+    "company": "GitHub",
+    "companyLogo": "https://logo.clearbit.com/github.com",
+    "position": "Senior Backend Engineer",
+    "description": "Help us build and scale GitHub's infrastructure to support millions of developers worldwide...",
+    "postedDate": "2023-05-18",
     "recruiters": [
       {
-        "name": "Oscar Johnson",
-        "email": "oscar.johnson@mobilerecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/oscar-johnson",
-        "avatar": "https://i.pravatar.cc/150?u=oscar.johnson@mobilerecruiter.com"
+        "name": "Mia Rodriguez",
+        "email": "mia.rodriguez@github.com",
+        "linkedinUrl": "https://www.linkedin.com/in/mia-rodriguez-github",
+        "avatar": "https://i.pravatar.cc/150?u=mia.rodriguez@github.com"
       },
       {
-        "name": "Penelope Brown",
-        "email": "penelope.brown@mobilerecruiter.com",
-        "linkedinUrl": "https://www.linkedin.com/in/penelope-brown",
-        "avatar": "https://i.pravatar.cc/150?u=penelope.brown@mobilerecruiter.com"
+        "name": "Noah Thompson",
+        "email": "noah.thompson@github.com",
+        "linkedinUrl": "https://www.linkedin.com/in/noah-thompson-github",
+        "avatar": "https://i.pravatar.cc/150?u=noah.thompson@github.com"
       }
     ],
     "hiringManagers": [
       {
-        "name": "Quincy Davis",
-        "email": "quincy.davis@apptech.com",
-        "linkedinUrl": "https://www.linkedin.com/in/quincy-davis",
-        "avatar": "https://i.pravatar.cc/150?u=quincy.davis@apptech.com"
+        "name": "Olivia Martin",
+        "email": "olivia.martin@github.com",
+        "linkedinUrl": "https://www.linkedin.com/in/olivia-martin-github",
+        "avatar": "https://i.pravatar.cc/150?u=olivia.martin@github.com"
       },
       {
-        "name": "Ruby White",
-        "email": "ruby.white@apptech.com",
-        "linkedinUrl": "https://www.linkedin.com/in/ruby-white",
-        "avatar": "https://i.pravatar.cc/150?u=ruby.white@apptech.com"
+        "name": "Peter Wang",
+        "email": "peter.wang@github.com",
+        "linkedinUrl": "https://www.linkedin.com/in/peter-wang-github",
+        "avatar": "https://i.pravatar.cc/150?u=peter.wang@github.com"
       }
     ],
     "companyInfo": {
-      "sector": "Mobile Development",
-      "founded": "2019",
+      "sector": "Software Development",
+      "founded": "2008",
       "ceo": {
-        "name": "Sydney Johnson",
-        "avatar": "https://i.pravatar.cc/150?u=sydney.johnson@apptech.com",
-        "linkedinUrl": "https://www.linkedin.com/in/sydney-johnson-ceo"
+        "name": "Thomas Dohmke",
+        "avatar": "https://i.pravatar.cc/150?u=thomas.dohmke@github.com",
+        "linkedinUrl": "https://www.linkedin.com/in/ashtom"
       },
       "openPositions": [
-        "iOS Specialist",
-        "Android Developer",
-        "Mobile UX Designer"
+        "Senior Backend Engineer",
+        "Security Engineer",
+        "Developer Advocate"
+      ]
+    }
+  },
+  {
+    "company": "Amazon",
+    "companyLogo": "https://logo.clearbit.com/amazon.com",
+    "position": "Software Development Engineer",
+    "description": "Join Amazon to work on large-scale distributed systems and innovative consumer products...",
+    "postedDate": "2023-05-19",
+    "recruiters": [
+      {
+        "name": "Quinn Foster",
+        "email": "quinn.foster@amazon.com",
+        "linkedinUrl": "https://www.linkedin.com/in/quinn-foster-amazon",
+        "avatar": "https://i.pravatar.cc/150?u=quinn.foster@amazon.com"
+      },
+      {
+        "name": "Rachel Kim",
+        "email": "rachel.kim@amazon.com",
+        "linkedinUrl": "https://www.linkedin.com/in/rachel-kim-amazon",
+        "avatar": "https://i.pravatar.cc/150?u=rachel.kim@amazon.com"
+      }
+    ],
+    "hiringManagers": [
+      {
+        "name": "Samuel Lee",
+        "email": "samuel.lee@amazon.com",
+        "linkedinUrl": "https://www.linkedin.com/in/samuel-lee-amazon",
+        "avatar": "https://i.pravatar.cc/150?u=samuel.lee@amazon.com"
+      },
+      {
+        "name": "Tina Chen",
+        "email": "tina.chen@amazon.com",
+        "linkedinUrl": "https://www.linkedin.com/in/tina-chen-amazon",
+        "avatar": "https://i.pravatar.cc/150?u=tina.chen@amazon.com"
+      }
+    ],
+    "companyInfo": {
+      "sector": "E-commerce, Cloud Computing",
+      "founded": "1994",
+      "ceo": {
+        "name": "Andy Jassy",
+        "avatar": "https://i.pravatar.cc/150?u=andy.jassy@amazon.com",
+        "linkedinUrl": "https://www.linkedin.com/in/andy-jassy"
+      },
+      "openPositions": [
+        "Software Development Engineer",
+        "Solutions Architect",
+        "Product Manager"
       ]
     }
   }

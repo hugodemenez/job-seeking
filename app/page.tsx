@@ -2,7 +2,7 @@
 
 import { CompanyLogo } from '@/components/companies-logo';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Linkedin } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
@@ -18,7 +18,7 @@ function Navbar() {
                     Latest hires
                 </Link>
                 <Link href='/dashboard'>
-                <Button variant={'outline'} className='bg-blue-600 group text-white flex items-center'>Connect LinkedIn <Linkedin className='ml-2 h-4 w-4 stroke-none fill-white group-hover:fill-blue-600' /></Button>
+                <Button variant={'outline'} className=' group  flex items-center'>Connect LinkedIn <Linkedin className='ml-2 h-4 w-4 stroke-none fill-blue-600 group-hover:fill-blue-600' /></Button>
                 </Link>
             </div>
         </div>
