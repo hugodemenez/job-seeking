@@ -16,6 +16,16 @@
       "email": "bob.smith@techinnovate.com",
       "linkedinUrl": "https://www.linkedin.com/in/bob-smith",
       "avatar": "https://i.pravatar.cc/150?u=bob.smith@techinnovate.com"
+    },
+    "companyInfo": {
+      "sector": "Software Development",
+      "founded": "2010",
+      "ceo": "Emma Watson",
+      "openPositions": [
+        "Full-stack Developer",
+        "UX Designer",
+        "DevOps Engineer"
+      ]
     }
   },
   {
@@ -35,6 +45,16 @@
       "email": "david.brown@designcraft.com",
       "linkedinUrl": "https://www.linkedin.com/in/david-brown",
       "avatar": "https://i.pravatar.cc/150?u=david.brown@designcraft.com"
+    },
+    "companyInfo": {
+      "sector": "Design and Creative Services",
+      "founded": "2015",
+      "ceo": "Michael Johnson",
+      "openPositions": [
+        "Senior UX/UI Designer",
+        "Graphic Designer",
+        "Motion Graphics Artist"
+      ]
     }
   },
   {
@@ -54,6 +74,16 @@
       "email": "frank.lee@aiinnovations.com",
       "linkedinUrl": "https://www.linkedin.com/in/frank-lee",
       "avatar": "https://i.pravatar.cc/150?u=frank.lee@aiinnovations.com"
+    },
+    "companyInfo": {
+      "sector": "Artificial Intelligence",
+      "founded": "2018",
+      "ceo": "Sophia Chen",
+      "openPositions": [
+        "Machine Learning Engineer",
+        "Data Scientist",
+        "AI Research Scientist"
+      ]
     }
   },
   {

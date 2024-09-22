@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd'
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckIcon, EyeIcon, LinkedinIcon, FileIcon } from 'lucide-react'
 import jobOffersData from '../../data/jobOffers.json'
 import { toast } from 'sonner'
@@ -32,6 +32,14 @@ interface JobOffer {
     linkedinUrl?: string
     avatar?: string
   }
+  companyInfo?: CompanyInfo
+}
+
+interface CompanyInfo {
+  sector: string
+  founded: string
+  ceo: string
+  openPositions: string[]
 }
 
 interface KanbanColumn {
@@ -196,32 +204,43 @@ export default function KanbanJobBoard() {
             >
               <Card className="w-full mb-4">
                 <CardHeader className='flex flex-row items-center gap-2'>
-
+                  <Avatar>
+                    <AvatarImage src={person.avatar} />
+                    <AvatarFallback>
+                    </AvatarFallback>
+                  </Avatar>
                   <CardTitle>{person.name}</CardTitle>
+
                 </CardHeader>
                 <CardContent>
+                  <CardDescription>{person.email}</CardDescription>
+                </CardContent>
+                <CardFooter className="flex flex-col justify-end gap-2">
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      window.open('https://interviewing.io', '_blank')
+                    }}
+                    className='w-full text-black bg-white font-mono  flex gap-x-2 text-xs'>
+                    Train with
+                    <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" height="23" viewBox="0 0 66 60"><g fill="none"><circle cx="33.5" cy="30.5" r="19.5" fill="#191e2a"></circle><path fill="hsl(49, 100%, 58%)" d="M9.29361504 51.0638317C3.6112475 45.615908 0 38.1913413 0 30 0 13.4314575 14.7746033 0 33 0c18.2253967 0 33 13.4314575 33 30S51.2253967 60 33 60c-.675214 0-1.3456917-.0184354-2.0109527-.0547637L31 60H.9963151c-.55024963 0-.66757903-.3160924-.27378995-.6947357l8.5710899-8.2414326zM43.9135787 31.3513934l-6.5085816 6.4902392c-.6043165.6026134-.5148206 1.5337974.1997291 2.0088213l1.314223.8736796c.656402.4363681 1.5932336.3456817 2.1461663-.2056927l8.5002268-8.4762715c.5805928-.5789567.5784934-1.5077402 0-2.0846034l-8.5002268-8.4762715c-.554671-.5531078-1.4926435-.6401467-2.1461663-.2056927l-1.314223.8736796c-.7208472.4792104-.8095753 1.4006937-.1997291 2.0088213l6.5085816 6.4902392c.1914525.1909129 0 .7030516 0 .7030516zm-21.8271574 0c-.1923352-.1917932-.1914525-.5121387 0-.7030516l6.5085816-6.4902392c.6098462-.6081276.5211181-1.5296109-.1997291-2.0088213l-1.314223-.8736796c-.6535228-.434454-1.5914953-.3474151-2.1461663.2056927l-8.5002268 8.4762715c-.5784934.5768632-.5805928 1.5056467 0 2.0846034l8.5002268 8.4762715c.5529327.5513744 1.4897643.6420608 2.1461663.2056927l1.314223-.8736796c.7145497-.4750239.8040456-1.4062079.1997291-2.0088213l-6.5085816-6.4902392z"></path></g></svg>
+                    </div>
+                    interviewing.io
+                    </Button>
                   {person.linkedinUrl && (
                     <Button
                       variant="outline"
                       asChild
-                      className="bg-white text-black px-4 py-2 h-auto flex items-center gap-8"
+                      className="w-full bg-white text-black px-4 py-2 h-auto flex items-center gap-8"
                     >
                       <a href={person.linkedinUrl} target="_blank" rel="noopener noreferrer">
-                        <Avatar>
-                          <AvatarImage src={person.avatar} />
-                          <AvatarFallback>
-                          </AvatarFallback>
-                        </Avatar>
                         <div className="flex flex-col items-start">
                           <Image src={'/LI-Logo.png'} alt="LinkedIn" width={60} height={20} />
                         </div>
                       </a>
                     </Button>
                   )}
-
-                </CardContent>
-                <CardFooter className="flex justify-between">
-                  <p className="text-sm text-muted-foreground">{person.email}</p>
                 </CardFooter>
               </Card>
             </div>
@@ -239,6 +258,38 @@ export default function KanbanJobBoard() {
           />
         </PDFViewer>
       </div>
+    )
+
+    const PersonCard = ({ person, title }: { person: { name: string, email: string, linkedinUrl?: string, avatar?: string }, title: string }) => (
+      <Card className="w-full mb-4">
+        <CardHeader className='flex flex-row items-center gap-2'>
+          <Avatar>
+            <AvatarImage src={person.avatar} />
+            <AvatarFallback>{person.name.charAt(0)}</AvatarFallback>
+          </Avatar>
+          <div>
+            <CardTitle>{person.name}</CardTitle>
+            <p className="text-sm text-muted-foreground">{title}</p>
+          </div>
+        </CardHeader>
+        <CardContent>
+          {person.linkedinUrl && (
+            <Button
+              variant="outline"
+              asChild
+              className="bg-white text-black px-4 py-2 h-auto flex items-center gap-8"
+            >
+              <a href={person.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                <LinkedinIcon className="w-4 h-4 mr-2" />
+                LinkedIn Profile
+              </a>
+            </Button>
+          )}
+        </CardContent>
+        <CardFooter>
+          <p className="text-sm text-muted-foreground">{person.email}</p>
+        </CardFooter>
+      </Card>
     )
 
     return (
@@ -278,7 +329,32 @@ export default function KanbanJobBoard() {
                       <SheetTitle>{offer.company}</SheetTitle>
                     </SheetHeader>
                     <SheetDescription>
-                      {offer.description}
+                      <div className="space-y-4">
+                        <h3 className="text-lg font-semibold">Job Description</h3>
+                        <p>{offer.description}</p>
+
+                        {offer.companyInfo && (
+                          <>
+                            <h3 className="text-lg font-semibold">Company Information</h3>
+                            <ul className="list-disc list-inside">
+                              <li>Sector: {offer.companyInfo.sector}</li>
+                              <li>Founded: {offer.companyInfo.founded}</li>
+                              <li>CEO: {offer.companyInfo.ceo}</li>
+                            </ul>
+
+                            <h4 className="text-md font-semibold">Open Positions</h4>
+                            <ul className="list-disc list-inside">
+                              {offer.companyInfo.openPositions.map((position, index) => (
+                                <li key={index}>{position}</li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
+
+                        <h3 className="text-lg font-semibold">Key Contacts</h3>
+                        <PersonCard person={offer.recruiter} title="Recruiter" />
+                        <PersonCard person={offer.hiringManager} title="Hiring Manager" />
+                      </div>
                     </SheetDescription>
                     {generatedDocuments[offer.id] && (
                       <div className="mt-4">
