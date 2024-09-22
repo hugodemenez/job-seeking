@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { generateResume } from '@/lib/generateResume'
-import { generateCoverLetter } from '@/lib/generateCoverLetter'
+import { generateResume } from './generateResume'
+import { generateCoverLetter } from './generateCoverLetter'
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 
 interface JobOffer {

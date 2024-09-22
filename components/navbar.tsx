@@ -1,124 +1,89 @@
 'use client'
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "./ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Bell, LogOut, Settings, Settings2, User } from "lucide-react";
+import { Input } from "./ui/input";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
-import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
-import Link from 'next/link'
-import { ChevronRight } from 'lucide-react'
-
-const steps = [
-  { name: 'Offers', path: '/' },
-  { name: 'Generated Documents', path: '/generated-documents' },
-  {
-    name: 'Training',
-    path: '/training',
-    subSteps: [
-      { name: 'Interview Recruiter', path: '/training/interview-recruiter' },
-      { name: 'Interview Hiring Manager', path: '/training/interview-hiring-manager' },
-      { name: 'Salary Negotiation', path: '/training/salary-negotiation' },
-    ],
-  },
-]
-
-export default function ArianeNavbar() {
-  const pathname = usePathname()
-  const [activeStep, setActiveStep] = useState(0)
-  const [activeSubStep, setActiveSubStep] = useState(-1)
-
-  useEffect(() => {
-    const updateActiveStep = () => {
-      for (let i = steps.length - 1; i >= 0; i--) {
-        if (pathname === steps[i].path) {
-          setActiveStep(i)
-          setActiveSubStep(-1)
-          return
-        }
-        if (steps[i].subSteps) {
-          const subSteps = steps[i].subSteps
-          if (Array.isArray(subSteps)) {
-            for (let j = subSteps.length - 1; j >= 0; j--) {
-              if (pathname === subSteps[j].path) {
-                setActiveStep(i)
-                setActiveSubStep(j)
-                return
-              }
-            }
-          }
-        }
-      }
-      // If no match found, set to the first step
-      setActiveStep(0)
-      setActiveSubStep(-1)
-    }
-
-    updateActiveStep()
-  }, [pathname])
-
-  const renderStep = (step: typeof steps[0], index: number) => {
-    const isActive = index === activeStep
-    const isDisabled = index > activeStep
-
-    return (
-      <li key={step.path} className="flex items-center">
-        {isDisabled ? (
-          <span className="text-sm font-medium text-gray-300 cursor-not-allowed">
-            {step.name}
-          </span>
-        ) : (
-          <Link
-            href={step.path}
-            className={`text-sm font-medium ${
-              isActive ? 'text-blue-600' : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            {step.name}
-          </Link>
-        )}
-        {index < steps.length - 1 && (
-          <ChevronRight className="h-5 w-5 text-gray-400 mx-2" />
-        )}
-        {isActive && step.subSteps && (
-          <ol className="flex items-center space-x-4 ml-4">
-            {step.subSteps.map((subStep, subIndex) => {
-              const isSubActive = subIndex === activeSubStep
-              const isSubDisabled = subIndex > activeSubStep
-
-              return (
-                <li key={subStep.path} className="flex items-center">
-                  {isSubDisabled ? (
-                    <span className="text-sm font-medium text-gray-300 cursor-not-allowed">
-                      {subStep.name}
-                    </span>
-                  ) : (
-                    <Link
-                      href={subStep.path}
-                      className={`text-sm font-medium ${
-                        isSubActive ? 'text-blue-600' : 'text-gray-500 hover:text-gray-700'
-                      }`}
-                    >
-                      {subStep.name}
-                    </Link>
-                  )}
-                  {subIndex < step.subSteps.length - 1 && (
-                    <ChevronRight className="h-5 w-5 text-gray-400 mx-2" />
-                  )}
-                </li>
-              )
-            })}
-          </ol>
-        )}
-      </li>
-    )
-  }
-
+export default function Navbar() {
   return (
-    <nav className="bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center h-16">
-          <ol className="flex items-center space-x-4">
-            {steps.map(renderStep)}
-          </ol>
-        </div>
+    <div className="border-b border-gray-200 flex justify-between items-center p-4 w-full px-24 bg-custom-light-gray">
+        <Link href="/">
+          <Image src="/logo.svg" alt="logo" width={128} height={64} />
+        </Link>
+        <div className="flex gap-2 items-center">
+          <div className="relative mr-2">
+            <Input
+              type="search"
+              placeholder="Search..."
+              className="w-[200px] pl-8"
+            />
+            <svg
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="ghost">
+                <Bell className="w-4 h-4" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80">
+              <div className="grid gap-4">
+                <div className="space-y-2">
+                  <h4 className="font-medium leading-none">Notifications</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Your recent notifications will appear here.
+                  </p>
+                </div>
+                {/* Add notification content here */}
+              </div>
+            </PopoverContent>
+          </Popover>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Avatar>
+                <AvatarImage src="https://media.licdn.com/dms/image/v2/D5603AQFbl8UNOyiYag/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1676993076269?e=1732752000&v=beta&t=orVkcJUjtlCx_p3Up3eOqNog1g2PBTuMOPCmZ6TF6x0" />
+                <AvatarFallback>HD</AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <Link href='/'>
+              <DropdownMenuItem>
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>Log out</span>
+              </DropdownMenuItem>
+              </Link>
+            </DropdownMenuContent>
+          </DropdownMenu>
       </div>
-    </nav>
-  )
+    </div>
+  );
 }
