@@ -35,7 +35,7 @@ export default function Home() {
 
     useEffect(() => {
         if (opportunityRef.current) {
-            const annotation = annotate(opportunityRef.current, { type: 'highlight', color: 'lightgray' });
+            const annotation = annotate(opportunityRef.current, { type: 'highlight', color: '#e4d5b7' });
             annotation.show();
         }
     }, []);

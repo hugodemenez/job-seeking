@@ -20,7 +20,7 @@ export function CompanyLogo({ name, className = '' }: CompanyLogoProps) {
         src={logos[name]}
         alt={`${name} logo`}
         fill
-        className="object-contain filter grayscale"
+        className="object-contain filter "
       />
     </div>
   );
