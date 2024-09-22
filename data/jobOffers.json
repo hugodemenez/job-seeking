@@ -10,13 +10,13 @@
         "name": "Alice Johnson",
         "email": "alice.johnson@google.com",
         "linkedinUrl": "https://www.linkedin.com/in/alice-johnson-google",
-        "avatar": "https://i.pravatar.cc/150?u=alice.johnson@google.com"
+        "avatar": "https://i.pravatar.cc/150?u=bob.williams@google.com"
       },
       {
         "name": "Bob Williams",
         "email": "bob.williams@google.com",
         "linkedinUrl": "https://www.linkedin.com/in/bob-williams-google",
-        "avatar": "https://i.pravatar.cc/150?u=bob.williams@google.com"
+        "avatar": "https://i.pravatar.cc/150?u=alice.johnson@google.com"
       }
     ],
     "hiringManagers": [
