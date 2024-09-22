@@ -3,7 +3,7 @@
     "company": "Google",
     "companyLogo": "https://logo.clearbit.com/google.com",
     "position": "Senior Software Engineer",
-    "description": "Join our team to work on cutting-edge technologies and help build products that impact billions of users...",
+    "description": "Join our team to work on cutting-edge technologies and help build products that impact billions of users",
     "postedDate": "2023-05-15",
     "recruiters": [
       {
@@ -38,7 +38,7 @@
       "founded": "1998",
       "ceo": {
         "name": "Sundar Pichai",
-        "avatar": "https://i.pravatar.cc/150?u=sundar.pichai@google.com",
+        "avatar": "https://s7d1.scene7.com/is/image/wbcollab/sundar_pichai_google_ceo-1?qlt=90&fmt=webp&resMode=sharp2",
         "linkedinUrl": "https://www.linkedin.com/in/sundar-pichai"
       },
       "openPositions": [
@@ -52,7 +52,7 @@
     "company": "Microsoft",
     "companyLogo": "https://logo.clearbit.com/microsoft.com",
     "position": "Cloud Solutions Architect",
-    "description": "Design and implement scalable, highly available, and fault-tolerant systems on Azure cloud infrastructure...",
+    "description": "Design and implement scalable, highly available, and fault-tolerant systems on Azure cloud infrastructure",
     "postedDate": "2023-05-16",
     "recruiters": [
       {
@@ -101,7 +101,7 @@
     "company": "LinkedIn",
     "companyLogo": "https://logo.clearbit.com/linkedin.com",
     "position": "Senior Frontend Engineer",
-    "description": "Join our team to build responsive and performant user interfaces using React and modern web technologies...",
+    "description": "Join our team to build responsive and performant user interfaces using React and modern web technologies",
     "postedDate": "2023-05-17",
     "recruiters": [
       {
@@ -150,7 +150,7 @@
     "company": "GitHub",
     "companyLogo": "https://logo.clearbit.com/github.com",
     "position": "Senior Backend Engineer",
-    "description": "Help us build and scale GitHub's infrastructure to support millions of developers worldwide...",
+    "description": "Help us build and scale GitHub's infrastructure to support millions of developers worldwide",
     "postedDate": "2023-05-18",
     "recruiters": [
       {
@@ -185,7 +185,7 @@
       "founded": "2008",
       "ceo": {
         "name": "Thomas Dohmke",
-        "avatar": "https://i.pravatar.cc/150?u=thomas.dohmke@github.com",
+        "avatar": "https://avatars.githubusercontent.com/u/70720?v=4",
         "linkedinUrl": "https://www.linkedin.com/in/ashtom"
       },
       "openPositions": [
@@ -199,7 +199,7 @@
     "company": "Amazon",
     "companyLogo": "https://logo.clearbit.com/amazon.com",
     "position": "Software Development Engineer",
-    "description": "Join Amazon to work on large-scale distributed systems and innovative consumer products...",
+    "description": "Join Amazon to work on large-scale distributed systems and innovative consumer products",
     "postedDate": "2023-05-19",
     "recruiters": [
       {

@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={poppins.variable}>
-      <body className='h-screen relative overflow-hidden'>
+      <body className='min-h-screen relative'>
         <Toaster />
         {children}
       </body>

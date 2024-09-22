@@ -5,8 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { annotate } from 'rough-notation';
+import { AdzunaJob, getJobOffers } from './dashboard/actions';
+import AdzunaJobCard from '@/components/adzuna-job-card';
+import AdzunaJobCardSkeleton from '@/components/adzuna-job-card-skeleton';
 
 function Navbar() {
     return (
@@ -18,14 +21,16 @@ function Navbar() {
                     Latest hires
                 </Link>
                 <Link href='/dashboard'>
-                <Button variant={'outline'} className=' group  flex items-center'>Connect LinkedIn <Linkedin className='ml-2 h-4 w-4 stroke-none fill-blue-600 group-hover:fill-blue-600' /></Button>
+                    <Button variant={'outline'} className=' group  flex items-center'>Connect LinkedIn <Linkedin className='ml-2 h-4 w-4 stroke-none fill-blue-600 group-hover:fill-blue-600' /></Button>
                 </Link>
             </div>
         </div>
     )
 }
 
+
 export default function Home() {
+    const [jobOffers, setJobOffers] = useState<AdzunaJob[]>([]);
     const opportunityRef = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
@@ -33,6 +38,19 @@ export default function Home() {
             const annotation = annotate(opportunityRef.current, { type: 'highlight', color: 'lightgray' });
             annotation.show();
         }
+    }, []);
+
+    useEffect(() => {
+        async function fetchJobOffers() {
+            try {
+                const offers = await getJobOffers();
+                setJobOffers(offers);
+            } catch (error) {
+                console.error('Error fetching job offers:', error);
+            }
+        }
+
+        fetchJobOffers();
     }, []);
 
     return (
@@ -75,9 +93,30 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-
-
             </div>
+
+            <main className='flex flex-1 flex-col justify-center gap-4 px-24'>
+                <section className='py-8'>
+                    <div className='flex flex-1 flex-col justify-center gap-4'>
+                        <h2 className='text-4xl font-medium leading-normal'>
+                            Latest job offers
+                        </h2>
+                        <div className='flex flex-1 flex-wrap gap-4 justify-between'>
+                            {
+                                jobOffers.map((offer) => (
+                                    <AdzunaJobCard key={offer.id} job={offer} />
+                                ))
+                            }
+                            {
+                                jobOffers.length === 0 &&
+                                Array.from({ length: 10 }).map((_, index) => (
+                                    <AdzunaJobCardSkeleton key={index} />
+                                ))
+                            }
+                        </div>
+                    </div>
+                </section>
+            </main>
         </div>
     )
 }

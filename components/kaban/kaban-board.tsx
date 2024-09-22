@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { EyeIcon, FileIcon } from 'lucide-react'
+import { Book, Brain, BrainCircuit, EyeIcon, FileIcon, GraduationCap, Info } from 'lucide-react'
 import jobOffersData from '../../data/jobOffers.json'
 import { toast } from 'sonner'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
@@ -14,6 +14,11 @@ import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/re
 import Image from 'next/image'
 import { Carousel, CarouselContent, CarouselItem } from '../ui/carousel'
 import Autoplay from "embla-carousel-autoplay"
+import { bouncy } from 'ldrs'
+import { CompanyLogo } from '../companies-logo'
+import SalaryComparison from '../salary-comparison'
+
+bouncy.register()
 
 interface JobOffer {
   id: string
@@ -49,15 +54,11 @@ interface CompanyInfo {
   openPositions: string[]
 }
 
-interface AppliedJobOffer extends JobOffer {
-  color: string;
-  originalOfferId?: string;
-}
 
 interface KanbanColumn {
   id: string
   title: string
-  items: (JobOffer | AppliedJobOffer)[]
+  items: (JobOffer)[]
 }
 
 interface GeneratedDocuments {
@@ -117,6 +118,8 @@ export default function KanbanJobBoard() {
   ])
   const [generatedDocuments, setGeneratedDocuments] = useState<Record<string, GeneratedDocuments>>({})
   const [colorMap, setColorMap] = useState<Record<string, string>>({})
+  const [loadingDocuments, setLoadingDocuments] = useState<Record<string, boolean>>({})
+
 
   useEffect(() => {
     const offersWithIds = jobOffersData.map(offer => ({
@@ -125,13 +128,9 @@ export default function KanbanJobBoard() {
     }))
 
     const newColorMap: Record<string, string> = {}
-
-    // Assign colors to all offers
-    offersWithIds.forEach((offer, index) => {
-      const colorIndex = index % customColors.length
-      newColorMap[offer.id] = customColors[colorIndex]
+    offersWithIds.forEach((offer) => {
+      newColorMap[offer.id] = getColorFromCompanyName(offer.company)
     })
-
     setColorMap(newColorMap)
 
     const appliedOffers = offersWithIds.slice(0, 1)
@@ -175,7 +174,10 @@ export default function KanbanJobBoard() {
   }, [])
 
   const generateDocuments = async (offer: JobOffer) => {
+    setLoadingDocuments(prev => ({ ...prev, [offer.id]: true }))
     try {
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 3000))
       const response = await fetch('/api/generateDocuments', {
         method: 'POST',
         headers: {
@@ -196,6 +198,8 @@ export default function KanbanJobBoard() {
     } catch (error) {
       console.error('Error generating documents:', error)
       toast.error('Failed to generate documents. Please try again later.')
+    } finally {
+      setLoadingDocuments(prev => ({ ...prev, [offer.id]: false }))
     }
   }
 
@@ -224,23 +228,24 @@ export default function KanbanJobBoard() {
     newColumns[sourceColIndex] = { ...sourceCol, items: sourceItems }
     newColumns[destColIndex] = { ...destCol, items: destItems }
 
+    setColumns(newColumns)
     if (destination.droppableId === 'applied') {
       const newColor = customColors[Object.keys(colorMap).length % customColors.length]
-      setColorMap(prev => ({ ...prev, [movedItem.id]: newColor }))
+      setColorMap(prev => ({ ...prev, [movedItem.id]: getColorFromCompanyName(movedItem.company) }))
 
-      const recruiterCards = movedItem.recruiters.map(recruiter => ({ 
-        ...movedItem, 
-        ...recruiter, 
-        id: crypto.randomUUID(), 
-        type: 'recruiter' as const, 
-        originalOfferId: movedItem.id 
+      const recruiterCards = movedItem.recruiters.map(recruiter => ({
+        ...movedItem,
+        ...recruiter,
+        id: crypto.randomUUID(),
+        type: 'recruiter' as const,
+        originalOfferId: movedItem.id
       }))
-      const hiringManagerCards = movedItem.hiringManagers.map(manager => ({ 
-        ...movedItem, 
-        ...manager, 
-        id: crypto.randomUUID(), 
-        type: 'hiringManager' as const, 
-        originalOfferId: movedItem.id 
+      const hiringManagerCards = movedItem.hiringManagers.map(manager => ({
+        ...movedItem,
+        ...manager,
+        id: crypto.randomUUID(),
+        type: 'hiringManager' as const,
+        originalOfferId: movedItem.id
       }))
 
       newColumns[2].items.push(...recruiterCards)
@@ -252,29 +257,35 @@ export default function KanbanJobBoard() {
       await generateDocuments(movedItem)
     }
 
-    setColumns(newColumns)
+  }
+  const getColorFromCompanyName = (companyName: string): string => {
+    if (companyName === 'Google') return 'custom-peach'
+    if (companyName === 'GitHub') return 'custom-yellow'
+    if (companyName === 'LinkedIn') return 'custom-lavender'
+    if (companyName === 'Amazon') return 'custom-periwinkle'
+    if (companyName === 'Microsoft') return 'custom-light-blue'
+    if (companyName === 'Tesla') return 'custom-mint'
+    return 'gray-200'
+  };
+
+  
+  const getBorderColorClass = (offer: JobOffer) => {
+    return `border-${getColorFromCompanyName(offer.company)}`
   }
 
-  const getCardBorderColor = (offerId: string) => {
-    if (!offerId) return 'border-gray-200'
-    const color = colorMap[offerId]
-    if (!color) {
-      return 'border-gray-200' // Default color if not found
-    }
-    return `border-${color}`
-  }
+  const JobOfferCard = ({ offer, index, columnId }: { offer: JobOffer, index: number, columnId: string }) => {
 
-  const JobOfferCard = ({ offer, index, columnId }: { offer: JobOffer | AppliedJobOffer, index: number, columnId: string }) => {
-    const borderColor = getCardBorderColor(offer.id)
+    const borderColorClass = getBorderColorClass(offer)
 
     if (columnId === 'recruiter' || columnId === 'hiringManager') {
-      const person = offer as JobOffer & { 
+      const person = offer as JobOffer & {
         type: 'recruiter' | 'hiringManager';
         name: string;
         email: string;
         avatar?: string;
         linkedinUrl?: string;
       };
+      const isCharlieBrown = person.name === 'Charlie Brown'
 
       return (
         <Draggable draggableId={offer.id} index={index}>
@@ -284,19 +295,40 @@ export default function KanbanJobBoard() {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
             >
-              <Card className={`w-full mb-4 border-2  ${borderColor}`}>
-                <CardHeader className='flex justify-start items-center gap-2'>
-                  <div className='flex w-full justify-start items-center gap-2'>
-                    <Avatar>
-                      <AvatarImage src={person.avatar} />
-                      <AvatarFallback>{person.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <CardTitle>{person.name}</CardTitle>
-                      <p className="text-sm text-muted-foreground">{columnId === 'recruiter' ? 'Recruiter' : 'Hiring Manager'}</p>
+              <Card className={`w-full mb-4 border-2 ${offer.company === 'Google' ? 'border-custom-peach' : offer.company === 'GitHub' ? 'border-custom-yellow' : offer.company === 'LinkedIn' ? 'border-custom-lavender' : offer.company === 'Amazon' ? 'border-custom-periwinkle' : offer.company === 'Microsoft' ? 'border-custom-light-blue' : offer.company === 'Tesla' ? 'border-custom-mint' : borderColorClass}`}>
+                <CardHeader className='flex justify-between items-center gap-2'>
+                  <div className='justify-start flex w-full'>
+                    <div className='flex w-full justify-start items-center gap-2'>
+                      <Avatar>
+                        <AvatarImage src={person.avatar} />
+                        <AvatarFallback>{person.name.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <CardTitle>{person.name}</CardTitle>
+                        <p className="text-sm text-muted-foreground">{columnId === 'recruiter' ? 'Recruiter' : 'Hiring Manager'}</p>
+                      </div>
                     </div>
+                    {isCharlieBrown && (
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger className='flex items-center gap-2 text-sm self-start'><Info className='w-4 h-4 '></Info></TooltipTrigger>
+                          <TooltipContent>
+                            <div className="flex items-center gap-2 text-sm">
+                              <Brain className="w-4 h-4" />
+                              <span>Common Interest in Baseball</span>
+                            </div>
+                            <div className='flex items-center gap-2 text-sm'>
+                              {/* Both studied at Stanford */}
+                              <GraduationCap className="w-4 h-4" />
+                              <span>Both studied at Stanford</span>
+                            </div>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    )}
                   </div>
-                  <CardDescription className='w-full justify-start'>{person.email}</CardDescription>
+                  <CardDescription className='w-full justify-start'>
+                    {person.email}</CardDescription>
                 </CardHeader>
                 <CardFooter className="grid grid-cols-2 justify-end gap-2">
                   <Button
@@ -310,19 +342,6 @@ export default function KanbanJobBoard() {
                     </div>
                     interviewing.io
                   </Button>
-                  {person.linkedinUrl && (
-                    <Button
-                      variant="outline"
-                      asChild
-                      className="w-full bg-white text-black px-4 py-2 h-auto flex items-center gap-8"
-                    >
-                      <a href={person.linkedinUrl} target="_blank" rel="noopener noreferrer">
-                        <div className="flex flex-col items-start">
-                          <Image src={'/LI-Logo.png'} alt="LinkedIn" width={60} height={20} />
-                        </div>
-                      </a>
-                    </Button>
-                  )}
                 </CardFooter>
               </Card>
             </div>
@@ -342,34 +361,223 @@ export default function KanbanJobBoard() {
       </div>
     )
 
-    const PersonCard = ({ person, title }: { person: { name: string, email: string, linkedinUrl?: string, avatar?: string }, title: string }) => (
-      <Card className="w-full mb-4">
-        <CardHeader className='flex flex-row items-center gap-2 p-2'>
-          <Avatar>
-            <AvatarImage src={person.avatar} />
-            <AvatarFallback>{person.name.charAt(0)}</AvatarFallback>
-          </Avatar>
-          <div>
-            <CardTitle>{person.name}</CardTitle>
-            <p className="text-sm text-muted-foreground">{title}</p>
-          </div>
-        </CardHeader>
-        <CardFooter className='flex justify-between p-2'>
-          <p className="text-sm text-muted-foreground">{person.email}</p>
-          {person.linkedinUrl && (
-            <Button
-              variant="outline"
-              asChild
-              className="bg-white text-black px-4 py-2 h-auto flex items-center gap-8"
+    const PersonCard = ({ person, title }: { person: { name: string, email: string, linkedinUrl?: string, avatar?: string }, title: string }) => {
+      const isCharlieBrown = person.name === 'Charlie Brown'
+      return (
+        <Card className="w-full mb-4">
+          <CardHeader className='flex flex-row items-center justify-between p-2 w-full'>
+            <div className='flex items-center gap-2'>
+              <Avatar>
+                <AvatarImage src={person.avatar} />
+                <AvatarFallback>{person.name.charAt(0)}</AvatarFallback>
+              </Avatar>
+              <div>
+                <CardTitle>{person.name}</CardTitle>
+                <p className="text-sm text-muted-foreground">{title}</p>
+              </div>
+            </div>
+            {isCharlieBrown && (
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger className='flex items-center gap-2 text-sm self-start'><Info className='w-4 h-4 '></Info></TooltipTrigger>
+                  <TooltipContent>
+                    <div className="flex items-center gap-2 text-sm">
+                      <Brain className="w-4 h-4" />
+                      <span>Common Interest: Baseball</span>
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            )}
+
+
+          </CardHeader>
+          <CardFooter className='flex justify-between p-2 self-end'>
+            <p className="text-sm text-muted-foreground">{person.email}</p>
+            {person.linkedinUrl && (
+              <Button
+                variant="outline"
+                asChild
+                className="bg-white text-black px-4 py-2 h-auto flex items-center gap-8"
+              >
+                <a href={person.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                  LinkedIn
+                </a>
+              </Button>
+            )}
+          </CardFooter>
+        </Card>
+      )
+    }
+
+    if (columnId === 'applied') {
+      return (
+        <Draggable draggableId={offer.id} index={index}>
+          {(provided) => (
+            <div
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
             >
-              <a href={person.linkedinUrl} target="_blank" rel="noopener noreferrer">
-                LinkedIn
-              </a>
-            </Button>
+              <Card className={`w-full mb-4 border-2 ${offer.company === 'Google' ? 'border-custom-peach' : offer.company === 'GitHub' ? 'border-custom-yellow' : offer.company === 'LinkedIn' ? 'border-custom-lavender' : offer.company === 'Amazon' ? 'border-custom-periwinkle' : offer.company === 'Microsoft' ? 'border-custom-light-blue' : offer.company === 'Tesla' ? 'border-custom-mint' : borderColorClass}`}>
+                <CardHeader className='flex flex-row items-center gap-2 pb-2'>
+                  <Avatar>
+                    <AvatarImage src={offer.companyLogo} />
+                    <AvatarFallback>{offer.company.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  <CardTitle className="p-0">
+                    {offer.company}
+                    <p className="text-sm font-light text-muted-foreground">{offer.position}</p>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className='pb-2'>
+                  <p className="text-sm text-muted-foreground">{offer.description.split(" ").slice(0, 15).join(" ")}...</p>
+                </CardContent>
+                <CardFooter className="flex justify-between">
+                  <p className="text-xs text-muted-foreground">
+                    Posted on: {new Date(offer.postedDate).toLocaleDateString()}
+                  </p>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <Button variant="outline" size="sm">
+                        {loadingDocuments[offer.id] ? (
+                          <div className="flex items-center justify-center gap-2">
+                            <p className="mt-2 text-xs font-light">Generating documents</p>
+                            <l-bouncy
+                              size="24"
+                              speed="1.75"
+                              color="black"
+                            />
+                          </div>
+                        ) : <div className='flex items-center justify-center gap-2'>
+                          Learn more
+                          <Book className='w-4 h-4'></Book>
+                        </div>
+                        }
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent size="large" className="overflow-y-auto">
+                      <SheetHeader>
+                        <SheetTitle>{offer.company}</SheetTitle>
+                      </SheetHeader>
+                      <SheetDescription>
+                        <div className="space-y-4">
+                          <h3 className="text-lg font-semibold">Job Description</h3>
+                          <p>{offer.description}</p>
+
+                          {offer.companyInfo && (
+                            <>
+                              <h3 className="text-lg font-semibold">Company Information</h3>
+                              <ul className="list-disc list-inside">
+                                <li>Sector: {offer.companyInfo.sector}</li>
+                                <li>Founded: {offer.companyInfo.founded}</li>
+                                <div className="mt-2">
+                                  <h4 className="text-md font-semibold">CEO</h4>
+                                  <Card className="mt-1">
+                                    <CardHeader className="flex flex-row items-center gap-2 p-2">
+                                      <Avatar>
+                                        <AvatarImage src={offer.companyInfo.ceo.avatar} />
+                                        <AvatarFallback>{offer.companyInfo.ceo.name.charAt(0)}</AvatarFallback>
+                                      </Avatar>
+                                      <div>
+                                        <CardTitle className="text-sm">{offer.companyInfo.ceo.name}</CardTitle>
+                                        <a href={offer.companyInfo.ceo.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-500 hover:underline">
+                                          LinkedIn Profile
+                                        </a>
+                                      </div>
+                                    </CardHeader>
+                                  </Card>
+                                </div>
+                              </ul>
+
+                              <h4 className="text-md font-semibold">Open Positions</h4>
+                              <div>
+                                <Carousel className="w-full"
+                                  plugins={[
+                                    Autoplay({
+                                      delay: 2000,
+                                    }),
+                                  ]}
+                                  opts={{
+                                    loop: true,
+                                    dragFree: true,
+                                    align: 'start',
+                                  }}
+                                >
+                                  <CarouselContent className="-ml-1">
+                                    {offer.companyInfo.openPositions.map((position, index) => (
+                                      <CarouselItem key={index} className="pl-1 lg:basis-1/2">
+                                        <Card>
+                                          <CardHeader>
+                                            <span className="text-xs font-semibold">{position}</span>
+                                          </CardHeader>
+                                        </Card>
+                                      </CarouselItem>
+                                    ))}
+                                  </CarouselContent>
+                                </Carousel>
+                              </div>
+                            </>
+                          )}
+
+                          <SalaryComparison offer={offer}></SalaryComparison>
+
+                          <h3 className="text-lg font-semibold">Recruiters</h3>
+                          <div className="flex gap-2">
+                            {offer.recruiters.map((recruiter, index) => (
+                              <PersonCard key={index} person={recruiter} title="Recruiter" />
+                            ))}
+                          </div>
+                          <h3 className="text-lg font-semibold mt-4">Hiring Managers</h3>
+                          <div className="flex gap-2">
+                            {offer.hiringManagers.map((manager, index) => (
+                              <PersonCard key={index} person={manager} title="Hiring Manager" />
+                            ))}
+                          </div>
+                        </div>
+                        {generatedDocuments[offer.id] && (
+                          <div className="mt-4">
+                            <h3 className="text-lg font-semibold mb-2">Generated Documents</h3>
+                            <div className="space-y-2 space-x-2">
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <Button variant="outline" size="sm">
+                                      <FileIcon className="w-4 h-4 mr-2" />
+                                      Resume
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent side="right">
+                                    <DocumentPreview type="resume" />
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <Button variant="outline" size="sm">
+                                      <FileIcon className="w-4 h-4 mr-2" />
+                                      Cover Letter
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent side="right">
+                                    <DocumentPreview type="coverLetter" />
+                                  </TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </div>
+                          </div>
+                        )}
+                      </SheetDescription>
+                    </SheetContent>
+                  </Sheet>
+                </CardFooter>
+              </Card>
+            </div>
           )}
-        </CardFooter>
-      </Card>
-    )
+        </Draggable>
+      )
+    }
 
     return (
       <Draggable draggableId={offer.id} index={index}>
@@ -379,7 +587,7 @@ export default function KanbanJobBoard() {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <Card className={`w-full mb-4 border-2 ${columnId === 'offers' ? 'border-gray-50' : borderColor}`}>
+            <Card className={`w-full mb-4 border-2 ${columnId === 'offers' ? 'border-gray-50' : borderColorClass}`}>
               <CardHeader className='flex flex-row items-center gap-2 pb-2'>
                 <Avatar>
                   <AvatarImage src={offer.companyLogo} />
@@ -387,11 +595,11 @@ export default function KanbanJobBoard() {
                 </Avatar>
                 <CardTitle className="p-0">
                   {offer.company}
-                <p className="text-sm font-light text-muted-foreground">{offer.position}</p>
+                  <p className="text-sm font-light text-muted-foreground">{offer.position}</p>
                 </CardTitle>
               </CardHeader>
               <CardContent className='pb-2'>
-                <p className="text-sm text-muted-foreground">{offer.description.split(" ").slice(0, 15).join(" ")}...</p>
+                <p className="text-sm text-muted-foreground">{offer.description}</p>
               </CardContent>
               <CardFooter className="flex justify-between">
                 <p className="text-xs text-muted-foreground">
